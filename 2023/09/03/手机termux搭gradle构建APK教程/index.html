@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>手机termux搭gradle构建APK教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="theme: channing-cyanhighlight: androidstudio本文已参与「掘力星计划」，赢取创作大礼包，挑战创作激励金。 首先下载termux打开等待初始化完毕如图  先下载辅助程序 pkg install git pkg install wget pkg install curl pkg install kona pkg install bsdtar 接着下载arch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机termux搭gradle构建APK教程">
+<meta property="og:url" content="http://example.com/2023/09/03/%E6%89%8B%E6%9C%BAtermux%E6%90%ADgradle%E6%9E%84%E5%BB%BAAPK%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="theme: channing-cyanhighlight: androidstudio本文已参与「掘力星计划」，赢取创作大礼包，挑战创作激励金。 首先下载termux打开等待初始化完毕如图  先下载辅助程序 pkg install git pkg install wget pkg install curl pkg install kona pkg install bsdtar 接着下载arch">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/101b244bb7fa4481962f0cfc873e7f66~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c76bef5ce2b4a0eaa819a6fa57a722d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed98171c836347988c7aeb3ed0254bc6~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3147ffb61764e7a8c887537c4c18c6c~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b77f0ad42e8a468faf3a86aae78e0f8e~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67e106a3ac174b50ad8076cc9f025fbf~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a3c79a1728944557bc95d93d15d8ae42~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d115c5d72b3f4617ad4aee2db9e5eea4~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2aa6538cb09c452fbef1950e304cd8e2~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4bf456939b134162b752080e7200c27f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6a65c99df29b4106b8d2054780d315ab~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e66e50f1d95d41b6b4c0ae145c9bad3a~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2023-09-03T13:01:27.000Z">
+<meta property="article:modified_time" content="2023-09-03T13:13:59.172Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/101b244bb7fa4481962f0cfc873e7f66~tplv-k3u1fbpfcp-watermark.image">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-手机termux搭gradle构建APK教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/03/%E6%89%8B%E6%9C%BAtermux%E6%90%ADgradle%E6%9E%84%E5%BB%BAAPK%E6%95%99%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-09-03T13:01:27.000Z" itemprop="datePublished">2023-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      手机termux搭gradle构建APK教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="theme-channing-cyanhighlight-androidstudio"><a href="#theme-channing-cyanhighlight-androidstudio" class="headerlink" title="theme: channing-cyanhighlight: androidstudio"></a>theme: channing-cyan<br>highlight: androidstudio</h2><p>本文已参与「<a target="_blank" rel="noopener" href="https://juejin.cn/post/7012210233804079141/" title="https://juejin.cn/post/7012210233804079141/">掘力星计划</a>」，赢取创作大礼包，挑战创作激励金。</p>
+<p>首先<a target="_blank" rel="noopener" href="https://www.coolapk.com/apk/com.termux">下载termux</a><br>打开等待初始化完毕如图</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/101b244bb7fa4481962f0cfc873e7f66~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>先下载辅助程序</p>
+<p>pkg install git</p>
+<p>pkg install wget</p>
+<p>pkg install curl</p>
+<p>pkg install kona</p>
+<p>pkg install bsdtar</p>
+<p>接着下载arch Linux 复制下面脚本到终端，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/SDRausty/TermuxArch/raw/master/setupTermuxArch.bash &amp;&amp; bash setupTermuxArch.bash</span><br></pre></td></tr></table></figure>
+<p>成功过程如图</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c76bef5ce2b4a0eaa819a6fa57a722d~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed98171c836347988c7aeb3ed0254bc6~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>输入进去Linux接着下载数据包<br>如果不下载这3个数据包，会如图</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3147ffb61764e7a8c887537c4c18c6c~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>安装失败。一个一个来不能急</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S unzip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S zip</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman-key --init &amp;&amp; pacman-key --populate archlinuxarm</span><br></pre></td></tr></table></figure>
+
+<p>接着安装sdkman</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s “https://get.sdkman.io” | bash</span><br></pre></td></tr></table></figure>
+
+<p>打开sdkman</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source <span class="string">&quot;/root/.sdkman/bin/sdkman-init.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>检查版本，<br>输入后会显示当前安装的版本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk version</span><br></pre></td></tr></table></figure>
+<p>在sdkman里面下载gradlesdk\</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk install gradle</span><br></pre></td></tr></table></figure>
+<p>创建这个喜欢的文件夹<br>然后返回Linux接着安装jdk在里面 这个是arm64的下载解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/VcotyQin/TermuxWithGradle/raw/master/jdk8_arm64/jdk-8u221-linux-arm64-vfp-hflt.tar.gz &amp;&amp; tar xzvf jdk-8u221-linux-arm64-vfp-hflt.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b77f0ad42e8a468faf3a86aae78e0f8e~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>接着下载编辑器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S vim</span><br></pre></td></tr></table></figure>
+<p>配置环境变量<br>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输入i 里面行编辑 滑到最下输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set java environment                                    </span><br><span class="line">export JAVA_HOME=#文件路径/jdk1.8.0_241         </span><br><span class="line">export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export JRE_hOME=$JAVA_HOME/jre</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67e106a3ac174b50ad8076cc9f025fbf~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>保存按ESC 输入:wq ＋回车<br>source一下<br>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>输入java可以验证是否配对成功</p>
+<p>再安装SDK<br>在Linux下创建一个目录在里面安装Android SDK Tools</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir android_sdk &amp;&amp; cd android_sdk &amp;&amp; wget <span class="attr">https</span>:<span class="comment">//dl.google.com/android/repository/sdk-tools-linux-4333796.zip &amp;&amp; unzip sdk-tools-linux-4333796.zip</span></span><br></pre></td></tr></table></figure>
+<p>可能不是最新，建议去官网复制 官网<a target="_blank" rel="noopener" href="https://developer.android.com/studio/">链接</a><br>配置环境变量Linux下执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>输入i滑到最底粘贴下面代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export</span><br><span class="line">ANDROID_HOME=/data/data/com.termux/files/home/android_sdk#这是SDK路径export PATH=$ANDROID_HOME/tools:$PATHexport PATH=$ANDROID_HOME/tools/bin:$PATHexport PATH=$ANDROID_HOME/platform-tools:$PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a3c79a1728944557bc95d93d15d8ae42~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>保存退出etc ;wq 回车接着<br>source &#x2F;etc&#x2F;profile<br>然后使用sdkmanager安装build-tools，platform-tools和platforms</p>
+<p>sdkmanager打开方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source &quot;$HOME/.sdkman/bin/sdkman-init.sh&quot;</span><br><span class="line">//或者</span><br><span class="line">source &quot;/root/.sdkman/bin/sdkman-init.sh&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdkmanager &quot;platform-tools&quot; &quot;build-tools;29.0.3&quot; &quot;platforms;android-29&quot;</span><br></pre></td></tr></table></figure>
+<p>适配termux</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="attr">https</span>:<span class="comment">//raw.githubusercontent.com/VcotyQin/TermuxWithGradle/master/adaptTermuxARM64.sh &amp;&amp; chmod 777 adaptTermuxARM64.sh &amp;&amp; ./adaptTermuxARM64.sh</span></span><br></pre></td></tr></table></figure>
+<p>将aapt,aapt2覆盖到android_sdk&#x2F;build-tools&#x2F;下<br>cd Androidsdk的路径</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d115c5d72b3f4617ad4aee2db9e5eea4~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>cd 29.0.2<br>输入l<br>rm -rf aapt<br>rm -rf aapt2\</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2aa6538cb09c452fbef1950e304cd8e2~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/VcotyQin/TermuxWithGradle/master/aapt/arm64/aapt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/VcotyQin/TermuxWithGradle/master/aapt/arm64/aapt2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4bf456939b134162b752080e7200c27f~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>下载完接着给权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 aapt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 aapt2</span><br></pre></td></tr></table></figure>
+<p>最后安装glibc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S glibc</span><br></pre></td></tr></table></figure>
+<p>搭建完成！</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6a65c99df29b4106b8d2054780d315ab~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>用gradle编译cd到路径执行<br>gradle build</p>
+<p>就可以开始编译</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e66e50f1d95d41b6b4c0ae145c9bad3a~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/03/%E6%89%8B%E6%9C%BAtermux%E6%90%ADgradle%E6%9E%84%E5%BB%BAAPK%E6%95%99%E7%A8%8B/" data-id="clm3i1183000168589bl72ezo" data-title="手机termux搭gradle构建APK教程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/09/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/03/%E6%89%8B%E6%9C%BAtermux%E6%90%ADgradle%E6%9E%84%E5%BB%BAAPK%E6%95%99%E7%A8%8B/">手机termux搭gradle构建APK教程</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/03/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
